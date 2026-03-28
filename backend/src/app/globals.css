@@ -3,21 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: #0D0D0F;
+  --background: #020617; /* Darker navy from screenshot */
   --foreground: #FFFFFF;
   --primary: #ff0000;
-  --secondary: #121214;
-  --card: #18181B;
-  --text-secondary: #8B8B93;
-  --border: #27272A;
+  --secondary: #0D1117;
+  --card: #0F172A; /* Slate-900 like card bg */
+  --text-secondary: #94A3B8; /* Slate-400 */
+  --border: #1E293B; /* Slate-800 */
   --primary-glow: rgba(255, 0, 0, 0.4);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0D0D0F;
-    --foreground: #FFFFFF;
-  }
 }
 
 body {
@@ -26,24 +19,19 @@ body {
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  
   .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+    @apply bg-slate-900/40 backdrop-blur-md border border-slate-800/50;
   }
   
   .neon-glow {
-    box-shadow: 0 0 40px -10px var(--primary-glow);
-  }
-  
-  .neon-border {
-    @apply border border-red-900/30;
-    box-shadow: 0 0 15px -5px var(--primary-glow);
+    box-shadow: 0 0 50px -10px var(--primary-glow);
   }
   
   .text-glow {
-    text-shadow: 0 0 10px var(--primary-glow);
+    text-shadow: 0 0 15px var(--primary-glow);
+  }
+
+  .nav-blur {
+    @apply bg-slate-950/80 backdrop-blur-lg;
   }
 }
