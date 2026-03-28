@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { verifyToken } from '@/lib/auth';
-import { writeFile } from 'fs/promises';
-import { join } from 'path';
+import { put } from '@vercel/blob';
 
 export async function POST(req: Request) {
   try {
@@ -25,20 +24,10 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
     }
 
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-
-    // Save locally to public/uploads directory
-    const fileName = `${userId}-${Date.now()}.jpg`;
-    const uploadDir = join(process.cwd(), 'public', 'uploads');
-    const filePath = join(uploadDir, fileName);
-
-    await writeFile(filePath, buffer);
-
-    // Generate absolute URL for React Native `<Image source={{uri}} />`
-    const host = req.headers.get('host') || '10.0.2.2:3000';
-    const protocol = host.includes('localhost') || host.includes('10.0.2.2') ? 'http' : 'https';
-    const pfpUrl = `${protocol}://${host}/uploads/${fileName}`;
+    // Upload image persistently to Vercel Blob storage
+    const fileName = `${userId}-${Date.now()}-${file.name.replace(/\s+/g, '-')}`;
+    const blob = await put(fileName, file, { access: 'public' });
+    const pfpUrl = blob.url;
 
     await prisma.user.update({
       where: { id: userId },
