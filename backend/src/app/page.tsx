@@ -55,8 +55,10 @@ export default function Home() {
               The Future of Networking
             </div>
             <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tight">
-              Tap. Connect. <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">Share Anytime.</span>
+              Your Digital Identity, <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
+                Reimagined.
+              </span>
             </h1>
             <p className="max-w-md text-lg text-zinc-400 leading-relaxed font-medium">
               Swap business cards with a single tap. Tapifi is the smartest, fastest, and only eco-friendly way to connect on the go.
