@@ -33,18 +33,7 @@
     "plugins": [
       "expo-secure-store",
       "react-native-nfc-manager",
-      "expo-font",
-      [
-        "expo-build-properties",
-        {
-          "android": {
-            "newArchEnabled": false
-          },
-          "ios": {
-            "newArchEnabled": false
-          }
-        }
-      ]
+      "expo-font"
     ],
     "extra": {
       "eas": {
