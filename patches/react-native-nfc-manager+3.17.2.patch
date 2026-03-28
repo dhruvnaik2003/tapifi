@@ -1,0 +1,25 @@
+diff --git a/node_modules/react-native-nfc-manager/android/build.gradle b/node_modules/react-native-nfc-manager/android/build.gradle
+index e9e5ae1..f946f0f 100644
+--- a/node_modules/react-native-nfc-manager/android/build.gradle
++++ b/node_modules/react-native-nfc-manager/android/build.gradle
+@@ -14,7 +14,7 @@ buildscript {
+ apply plugin: 'com.android.library'
+ 
+ android {
+-	compileSdkVersion safeExtGet('compileSdkVersion', 31)
++	compileSdkVersion safeExtGet('compileSdkVersion', 35)
+ 
+ 	def agpVersion = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION
+ 
+@@ -23,9 +23,9 @@ android {
+   }
+ 
+ 	defaultConfig {
+-		minSdkVersion safeExtGet('minSdkVersion', 16)
++		minSdkVersion safeExtGet('minSdkVersion', 24)
+     	//noinspection OldTargetApi
+-		targetSdkVersion safeExtGet('targetSdkVersion', 27)
++		targetSdkVersion safeExtGet('targetSdkVersion', 34)
+ 	}
+ 	lintOptions {
+ 		abortOnError false

@@ -21,10 +21,24 @@
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.NFC"
+      ],
+      "package": "tapifi.apk"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-secure-store",
+      "react-native-nfc-manager",
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "ce940fbd-ea22-4e24-a35e-a9942c6dadec"
+      }
     }
   }
 }
