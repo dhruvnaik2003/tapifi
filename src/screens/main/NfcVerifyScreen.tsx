@@ -151,27 +151,7 @@ export default function NfcVerifyScreen({ navigation }: any) {
           </View>
         </Modal>
 
-        {__DEV__ && (
-          <TouchableOpacity 
-            style={styles.simulateButton} 
-            onPress={() => {
-              const simulatedUid = `test-chip-${Date.now()}`;
-              setLoading(true);
-              apiClient.post('/api/nfc/verify', { uid: simulatedUid })
-                .then(() => {
-                  updateUser({ chipStatus: 'verified', scannedChipId: simulatedUid });
-                  if (Platform.OS === 'android') {
-                    ToastAndroid.show('Chip verified! Ready for activation.', ToastAndroid.LONG);
-                  }
-                  navigation.navigate('NfcActivate', { uid: simulatedUid });
-                })
-                .catch((err: any) => Alert.alert('Test Error', err.response?.data?.error || 'Failed'))
-                .finally(() => setLoading(false));
-            }}
-          >
-            <Text style={styles.simulateButtonText}>Simulate Test Chip</Text>
-          </TouchableOpacity>
-        )}
+
       </View>
     </View>
   );

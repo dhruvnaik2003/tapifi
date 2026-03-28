@@ -111,20 +111,7 @@ export default function NfcActivateScreen({ route, navigation }: any) {
           </TouchableOpacity>
         )}
 
-        {__DEV__ && (
-          <TouchableOpacity 
-            style={styles.simulateButton} 
-            onPress={() => {
-              // Bypass physical NFC writing, just perform backend activation
-              setIsWriting(true);
-              setTimeout(() => {
-                performActivation();
-              }, 1000);
-            }}
-          >
-            <Text style={styles.simulateButtonText}>Simulate Test Write</Text>
-          </TouchableOpacity>
-        )}
+
       </View>
     </View>
   );
