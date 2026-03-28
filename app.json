@@ -25,7 +25,7 @@
       "permissions": [
         "android.permission.NFC"
       ],
-      "package": "tapifi.apk"
+      "package": "in.tapifi.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -33,11 +33,22 @@
     "plugins": [
       "expo-secure-store",
       "react-native-nfc-manager",
-      "expo-font"
+      "expo-font",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "newArchEnabled": false
+          },
+          "ios": {
+            "newArchEnabled": false
+          }
+        }
+      ]
     ],
     "extra": {
       "eas": {
-        "projectId": "ce940fbd-ea22-4e24-a35e-a9942c6dadec"
+        "projectId": "8f49482f-1659-48d4-98d7-0aa562abaf2c"
       }
     }
   }
