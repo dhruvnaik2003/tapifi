@@ -15,7 +15,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "in.tapifi.app",
       "infoPlist": {
-        "NFCReaderUsageDescription": "Allow Tapifi to scan your physical NFC hardware tags and easily link them with your digital profile."
+        "NFCReaderUsageDescription": "Allow Tapifi to verify and activate Smart NFC products."
       }
     },
     "android": {
@@ -36,7 +36,12 @@
     },
     "plugins": [
       "expo-secure-store",
-      "react-native-nfc-manager",
+      [
+        "react-native-nfc-manager",
+        {
+          "nfcPermission": "Allow Tapifi to verify and activate Smart NFC products."
+        }
+      ],
       "expo-font"
     ],
     "extra": {
