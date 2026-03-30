@@ -18,10 +18,10 @@ export default function HelpSupportScreen() {
     setLoading(true);
     try {
       await apiClient.post('/api/help', { question });
-      Alert.alert('Success', 'Your question has been submitted. We will get back to you soon.');
+      Alert.alert('Success', 'Your question has been submitted to Tapifi Support. We will get back to you shortly.');
       setQuestion('');
     } catch (error) {
-      Alert.alert('Error', 'Failed to submit question');
+      Alert.alert('Error', 'Failed to submit question. Please check your connection.');
     } finally {
       setLoading(false);
     }

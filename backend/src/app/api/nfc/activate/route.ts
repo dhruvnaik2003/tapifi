@@ -4,11 +4,15 @@ import { verifyToken } from '@/lib/auth';
 
 export async function POST(req: Request) {
   try {
-    const { uid } = await req.json();
+    const rawBody = await req.json();
+    let uid = rawBody.uid;
 
     if (!uid) {
       return NextResponse.json({ error: 'NFC UID is required' }, { status: 400 });
     }
+
+    // Force strict database normalization: remove all colons and cast to lowercase natively
+    uid = String(uid).replace(/:/g, '').toLowerCase();
 
     const chip = await prisma.nfcChip.findUnique({ where: { uid } });
     if (!chip) {

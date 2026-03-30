@@ -4,6 +4,7 @@ import { useAuthStore } from '../../store/useAuthStore';
 import { apiClient } from '../../api/client';
 import { theme } from '../../theme/Theme';
 import { Wifi, Mail, Lock } from 'lucide-react-native';
+import { Logo } from '../../components/Logo';
 
 export default function LoginScreen({ navigation }: any) {
   const [email, setEmail] = useState('');
@@ -40,8 +41,7 @@ export default function LoginScreen({ navigation }: any) {
       <ScrollView contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
         <View style={styles.card}>
           <View style={styles.headerArea}>
-            <Wifi color={theme.colors.primary} size={32} />
-            <Text style={styles.logoText}>TAPIFI</Text>
+            <Logo size={36} />
           </View>
           <Text style={styles.subtitle}>Welcome back to TAPIFI</Text>
 

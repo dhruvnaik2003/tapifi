@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, StyleSheet, Switch, TouchableOpacity, Image, ScrollView, Modal, Alert, Linking, Animated, Dimensions, ToastAndroid, Platform } from 'react-native';
+import { View, Text, StyleSheet, Switch, TouchableOpacity, Image, ScrollView, Modal, Alert, Linking, Animated, Dimensions, ToastAndroid, Platform, Share as RNShare } from 'react-native';
 import { useAuthStore } from '../../store/useAuthStore';
 import { theme } from '../../theme/Theme';
 import { QrCode, LogOut, X, Edit2, ChevronRight, Share, Globe } from 'lucide-react-native';
@@ -86,12 +86,15 @@ export default function DashboardScreen({ navigation }: any) {
 
   const profileUrl = `https://tapifi.in/p/${user?.id || 'demo'}`;
 
-  const copyLink = async () => {
-    await ClipboardExpo.setStringAsync(profileUrl);
-    if (Platform.OS === 'android') {
-      ToastAndroid.show('Profile link copied to clipboard.', ToastAndroid.LONG);
-    } else {
-      Alert.alert('Copied!', 'Profile link copied to clipboard.');
+  const shareProfile = async () => {
+    try {
+      await RNShare.share({
+        message: `Check out my Tapifi profile: ${profileUrl}`,
+        url: profileUrl,
+        title: 'My Tapifi Profile',
+      });
+    } catch (error: any) {
+      Alert.alert('Error', error.message);
     }
   };
 
@@ -164,7 +167,7 @@ export default function DashboardScreen({ navigation }: any) {
             <Text style={styles.quickActionText}>Show QR</Text>
           </PremiumButton>
 
-          <PremiumButton onPress={copyLink} style={styles.quickActionBox}>
+          <PremiumButton onPress={shareProfile} style={styles.quickActionBox}>
             <View style={styles.quickActionIconBg}><Share color="#FFF" size={24} /></View>
             <Text style={styles.quickActionText}>Share</Text>
           </PremiumButton>

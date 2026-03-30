@@ -12,6 +12,7 @@ export default function MainNavigator() {
   return (
     <Tab.Navigator
       screenOptions={{
+        headerShown: false,
         headerStyle: { backgroundColor: theme.colors.background },
         headerTintColor: theme.colors.text,
         headerTitleStyle: { fontFamily: theme.typography.header.fontFamily },

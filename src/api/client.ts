@@ -1,9 +1,9 @@
 import axios from 'axios';
 import * as SecureStore from 'expo-secure-store';
 
-// 10.0.2.2 is the special IP that allows Android emulators to access your computer's "localhost"
+// 192.168.20.102 is your computer's local Wi-Fi IP address for your connected phone
 // Note: If your backend runs on a port other than 3000, change it below.
-export const API_URL = __DEV__ ? 'http://10.0.2.2:3000' : 'https://api.tapifi.in';
+export const API_URL = __DEV__ ? 'http://192.168.20.102:3000' : 'https://www.tapifi.in';
 
 export const apiClient = axios.create({
   baseURL: API_URL,

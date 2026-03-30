@@ -35,15 +35,6 @@ export default function NfcActivateScreen({ route, navigation }: any) {
   }, [hasNfc, isWriting]);
 
   const writeChip = async () => {
-    if (hasNfc === false) {
-      // Emulator Mock Mode
-      setIsWriting(true);
-      setTimeout(() => {
-        performActivation();
-      }, 2000);
-      return;
-    }
-
     try {
       setIsWriting(true);
       await NfcManager.requestTechnology(NfcTech.Ndef);
@@ -110,8 +101,6 @@ export default function NfcActivateScreen({ route, navigation }: any) {
             <Text style={styles.buttonText}>{loading ? 'Activating...' : 'Tap to Write'}</Text>
           </TouchableOpacity>
         )}
-
-
       </View>
     </View>
   );
@@ -130,7 +119,5 @@ const styles = StyleSheet.create({
   subtitle: { ...theme.typography.body, textAlign: 'center', color: theme.colors.textSecondary, marginBottom: theme.spacing.xxl, lineHeight: 24 },
   button: { backgroundColor: theme.colors.primary, paddingVertical: 16, paddingHorizontal: 32, borderRadius: 30, width: '100%', alignItems: 'center' },
   cancelButton: { backgroundColor: theme.colors.border },
-  buttonText: { ...theme.typography.button },
-  simulateButton: { marginTop: theme.spacing.xl, paddingVertical: 12, backgroundColor: '#333', borderRadius: 20, paddingHorizontal: 20 },
-  simulateButtonText: { ...theme.typography.caption, color: '#fff', fontSize: 12 }
+  buttonText: { ...theme.typography.button }
 });

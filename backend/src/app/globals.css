@@ -1,37 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
-  --background: #020617; /* Darker navy from screenshot */
-  --foreground: #FFFFFF;
-  --primary: #ff0000;
-  --secondary: #0D1117;
-  --card: #0F172A; /* Slate-900 like card bg */
-  --text-secondary: #94A3B8; /* Slate-400 */
-  --border: #1E293B; /* Slate-800 */
-  --primary-glow: rgba(255, 0, 0, 0.4);
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
 }
 
 body {
-  color: var(--foreground);
   background: var(--background);
-}
-
-@layer utilities {
-  .glass {
-    @apply bg-slate-900/40 backdrop-blur-md border border-slate-800/50;
-  }
-  
-  .neon-glow {
-    box-shadow: 0 0 50px -10px var(--primary-glow);
-  }
-  
-  .text-glow {
-    text-shadow: 0 0 15px var(--primary-glow);
-  }
-
-  .nav-blur {
-    @apply bg-slate-950/80 backdrop-blur-lg;
-  }
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
 }
